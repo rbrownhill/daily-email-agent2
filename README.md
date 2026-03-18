@@ -1,2 +1,8 @@
 # daily-email-agent2
 first attempt at GitHub Agentic workflow using openai key
+
+3/18/2026
+1. I went to settings actions general to add workflow permissions
+2. I added a Google AI Studio Gemma3 key at settings Secrets_And_Variables Actions
+
+3. 
