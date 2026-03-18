@@ -16,8 +16,8 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           # Use secrets defined in the repository settings
-          server_address: ${{ secrets.EMAIL_SERVER }}
-          server_port: ${{ secrets.EMAIL_PORT }}
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.EMAIL1_USERNAME }}
           password: ${{ secrets.EMAIL1_PASSWORD }}
           subject: "Your Daily Morning Message"
