@@ -16,12 +16,12 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           # Use secrets defined in the repository settings
-          server_address: ${{ secrets.MAIL_SERVER }}
-          server_port: ${{ secrets.MAIL_PORT }}
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          server_address: ${{ secrets.EMAIL_SERVER }}
+          server_port: ${{ secrets.EMAIL_PORT }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Your Daily Morning Message"
-          to: ${{ secrets.MAIL_RECIPIENT }}
-          from: ${{ secrets.MAIL_SENDER }}
+          to: ${{ secrets.EMAIL_USERNAME }}
+          from: ${{ secrets.EMAIL_USERNAME }}
           # The email body can be plain text or HTML
           body: "Good morning! This is your automated daily message from GitHub Actions."
