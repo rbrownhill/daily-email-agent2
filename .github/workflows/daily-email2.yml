@@ -18,10 +18,10 @@ jobs:
           # Use secrets defined in the repository settings
           server_address: ${{ secrets.EMAIL_SERVER }}
           server_port: ${{ secrets.EMAIL_PORT }}
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          username: ${{ secrets.EMAIL1_USERNAME }}
+          password: ${{ secrets.EMAIL1_PASSWORD }}
           subject: "Your Daily Morning Message"
-          to: ${{ secrets.EMAIL_USERNAME }}
-          from: ${{ secrets.EMAIL_USERNAME }}
+          to: ${{ secrets.EMAIL1_USERNAME }}
+          from: ${{ secrets.EMAIL1_USERNAME }}
           # The email body can be plain text or HTML
           body: "Good morning! This is your automated daily message from GitHub Actions."
