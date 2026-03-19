@@ -1,0 +1,2 @@
+yfinance
+# Add any other required packages here (e.g., pandas)
