@@ -1,2 +1,4 @@
 yfinance
+json
+requests
 # Add any other required packages here (e.g., pandas)
