@@ -13,7 +13,7 @@ if current_price and prev_close:
     daily_change = current_price - prev_close
     percent_change = (daily_change / prev_close) * 100
     
-    print(f"{ticker_symbol} Current Price: ${current_price:.2f}")
+    print(f"Current Price: ${current_price:.2f}")
     print(f"Daily Change: ${daily_change:.2f} ({percent_change:.2f}%)")
 else:
     print("Data not available")
