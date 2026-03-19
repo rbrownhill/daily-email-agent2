@@ -24,6 +24,8 @@ jobs:
 
       - name: Run-Python-script
         id: Run-Python-script
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GEMMA3_API_KEY }}
         run: python .github/workflows/my.py
     
       - name: Send mail
@@ -44,7 +46,10 @@ jobs:
             AVGO stock price is ${{ steps.Run-Python-script.outputs.avgo_price }}  
             change ${{ steps.Run-Python-script.outputs.avgo_change }}
             pct ${{ steps.Run-Python-script.outputs.avgo_pct_change }}%
-            
 
-            
+            *********  Daily Stoic Quote
+            ${{ steps.Run-Python-script.outputs.stoic_quote }}
+
+            ******** Daily Stupid Betting Market Bet
+            ${{ steps.Run-Python-script.outputs.bet_text }}
   
