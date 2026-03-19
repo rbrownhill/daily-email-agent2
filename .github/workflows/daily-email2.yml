@@ -33,12 +33,15 @@ jobs:
           server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.EMAIL1_USERNAME }}
           password: ${{ secrets.EMAIL1_PASSWORD }}
-          subject: "Your Daily Morning Message"
+          subject: "Robert's AI Agent Morning Message"
           to: ${{ secrets.EMAIL1_USERNAME }}
           from: ${{ secrets.EMAIL1_USERNAME }}
           # The email body can be plain text or HTML
-          body: Good morning! This is the daily email from my first AI Agent.
-            The current AVGO stock price is ${{ steps.run-script.outputs.my_output_variable }}
+          body: |
+            Good morning! This is the daily email from my first AI Agent.
+            
+            AVGO stock price is ${{ steps.Run-Python-script.outputs.avgo_price }}  change ${{ steps.Run-Python-script.outputs.avgo_change }}  pct ${{ steps.Run-Python-script.outputs.avgo_pct_change }}%
+            
 
             
   
