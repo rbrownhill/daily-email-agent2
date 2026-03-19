@@ -23,6 +23,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install yfinance; fi
 
       - name: Run-Python-script
+        id: Run-Python-script
         run: python .github/workflows/my.py
     
       - name: Send mail
