@@ -15,12 +15,15 @@ if current_price and prev_close:
     
     print(f"Current Price: ${current_price:.2f}")
     print(f"Daily Change: ${daily_change:.2f} ({percent_change:.2f}%)")
+    str1 = f"${current_price:.2f}"
+    str2 = f"${daily_change:.2f}"
+    str3 = f"${percent_change:.2f}"
 else:
     print("Data not available")
 
 # Set the output variable for GitHub Actions
 # GITHUB_OUTPUT is an environment file provided by GitHub Actions
 with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-    print(f'avgo_price={current_price}', file=fh)
-    print(f'avgo_change={daily_change}', file=fh)
-    print(f'avgo_pct_change={percent_change}', file=fh)
+    print(f'avgo_price={str1}', file=fh)
+    print(f'avgo_change={str2}', file=fh)
+    print(f'avgo_pct_change={str3}', file=fh)
