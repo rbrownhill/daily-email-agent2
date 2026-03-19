@@ -2,9 +2,8 @@ name: Daily Email Report
 
 on:
   schedule:
-    # Run every morning at 7 AM UTC
-    # (adjust cron to your preferred time, check crontab.guru for help)
-    - cron: '0 6 * * *'
+    # Run every morning at 11:45 UTC (6:45 my time)
+    - cron: '45 11 * * *'
   workflow_dispatch:
     # Allows manual triggering from the GitHub Actions UI
 
@@ -12,6 +11,15 @@ jobs:
   send-daily-email:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.10'      
+      - name: Run-Python-script
+        run: python my.py
+    
       - name: Send mail
         uses: dawidd6/action-send-mail@v16
         with:
@@ -24,4 +32,8 @@ jobs:
           to: ${{ secrets.EMAIL1_USERNAME }}
           from: ${{ secrets.EMAIL1_USERNAME }}
           # The email body can be plain text or HTML
-          body: "Good morning! This is your automated daily message from GitHub Actions."
+          body: Good morning! This is the daily email from my first AI Agent.
+            The current AVGO stock price is ${{ steps.run-script.outputs.my_output_variable }}
+
+            
+  
