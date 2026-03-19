@@ -15,9 +15,9 @@ if current_price and prev_close:
     
     print(f"Current Price: ${current_price:.2f}")
     print(f"Daily Change: ${daily_change:.2f} ({percent_change:.2f}%)")
-    str1 = f"${current_price:.2f}"
-    str2 = f"${daily_change:.2f}"
-    str3 = f"${percent_change:.2f}"
+    str1 = f"{current_price:.2f}"
+    str2 = f"{daily_change:.2f}"
+    str3 = f"{percent_change:.2f}"
 else:
     print("Data not available")
 
