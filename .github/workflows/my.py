@@ -30,7 +30,6 @@ def call_ai_studio(prompt_text):
     # Get key from environment (stored in GitHub Secrets)
     api_key = os.getenv("GOOGLE_API_KEY")
     url = "https://generativelanguage.googleapis.com"
-    url = f"https://generativelanguage.googleapis.com{api_key}"
     # Pass the API key as a parameter; requests will handle the '?' and '=' correctly
     params = {'key': api_key}
     
