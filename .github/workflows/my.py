@@ -29,14 +29,17 @@ else:
 def call_ai_studio(prompt_text):
     # Get key from environment (stored in GitHub Secrets)
     api_key = os.getenv("GOOGLE_API_KEY")
+    url = "https://generativelanguage.googleapis.com"
     url = f"https://generativelanguage.googleapis.com{api_key}"
+    # Pass the API key as a parameter; requests will handle the '?' and '=' correctly
+    params = {'key': api_key}
     
     headers = {'Content-Type': 'application/json'}
     data = {
         "contents": [{"parts": [{"text": prompt_text}]}]
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, params=params)
     
     if response.status_code == 200:
         # Extract response text
@@ -46,10 +49,13 @@ def call_ai_studio(prompt_text):
         raise Exception(f"API Error {response.status_code}: {response.text}")
 
 if __name__ == "__main__":
-    # Example: Calling it twice for different tasks
-    stoic = call_ai_studio("provide me a quote by using an api call to endpoint https://stoic-quotes.com/api/quotes.  return just the quote..")
-    bet = call_ai_studio("find a specific example of an illogical bet that is active on a betting website such as kalshi or polymarket. choose one at random so that your reply is likely to be different from yesterday. make your response brief.")
-
+    try:
+        # Example: Calling it twice for different tasks
+        stoic = call_ai_studio("provide me a quote by using an api call to endpoint https://stoic-quotes.com/api/quotes.  return just the quote..")
+        bet = call_ai_studio("find a specific example of an illogical bet that is active on a betting website such as kalshi or polymarket. choose one at random so that your reply is likely to be different from yesterday. make your response brief.")
+    except Exception as e:
+        print(f"Error: {e}")
+        exit(1)
 
 # OUTPUT SECTION
 # GITHUB_OUTPUT is an environment file provided by GitHub Actions
