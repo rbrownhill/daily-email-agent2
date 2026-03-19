@@ -21,8 +21,6 @@ else:
 # Set the output variable for GitHub Actions
 # GITHUB_OUTPUT is an environment file provided by GitHub Actions
 with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-    print(f"{ticker_symbol} Current Price: ${current_price:.2f}", file=fh)
-    print(f"Daily Change: ${daily_change:.2f} ({percent_change:.2f}%)", file=fh)
     print(f'avgo_price={current_price}', file=fh)
     print(f'avgo_change={daily_change}', file=fh)
     print(f'avgo_pct_change={percent_change}', file=fh)
