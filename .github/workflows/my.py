@@ -28,7 +28,7 @@ else:
 
 def call_ai_studio(prompt_text):
     # Get key from environment (stored in GitHub Secrets)
-    api_key = os.getenv("GEMMA3_API_KEY")
+    api_key = os.getenv("GOOGLE_API_KEY")
     url = f"https://generativelanguage.googleapis.com{api_key}"
     
     headers = {'Content-Type': 'application/json'}
