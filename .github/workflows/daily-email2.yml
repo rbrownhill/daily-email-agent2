@@ -3,7 +3,7 @@ name: Daily Email Report
 on:
   schedule:
     # Run every morning at 11:45 UTC (6:45 my time)
-    - cron: '45 11 * * *'
+    - cron: '45 13 * * *'
   workflow_dispatch:
     # Allows manual triggering from the GitHub Actions UI
 
