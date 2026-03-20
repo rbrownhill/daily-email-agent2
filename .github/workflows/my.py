@@ -42,7 +42,7 @@ def call_ai_studio(prompt_text):
     }
 
     response = client.models.generate_content(model="gemini-3-flash-preview", contents=prompt_text)
-    return response.txt
+    return response.text
 
     
     #  response = requests.post(url, headers=headers, json=data, params=params)  
