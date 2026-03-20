@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.EMAIL1_USERNAME }}
           password: ${{ secrets.EMAIL1_PASSWORD }}
           subject: "Robert's AI Agent Daily Briefing"
-          to: "rbrownhill6@gmail.com"
+          to: "brownhillsd@gmail.com,ebrownhi@andrew.cmu.edu"
           from: ${{ secrets.EMAIL1_USERNAME }}
           # The email body can be plain text or HTML
           body: |
