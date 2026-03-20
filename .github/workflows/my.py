@@ -2,6 +2,7 @@ import yfinance as yf
 import os
 import requests
 import json
+from google import genai
 
 # STOCK QUOTE SECTION
 
@@ -27,8 +28,10 @@ else:
 #  AI MODEL SECTION
 
 def call_ai_studio(prompt_text):
+    # The client gets the API key from the environment variable `GEMINI_API_KEY`.
+    client = genai.Client()
     # Get key from environment (stored in GitHub Secrets)
-    api_key = os.getenv("GOOGLE_API_KEY")
+    api_key = os.getenv("GEMINI_API_KEY")
     url = "https://generativelanguage.googleapis.com"
     # Pass the API key as a parameter; requests will handle the '?' and '=' correctly
     params = {'key': api_key}
@@ -38,20 +41,23 @@ def call_ai_studio(prompt_text):
         "contents": [{"parts": [{"text": prompt_text}]}]
     }
 
-    response = requests.post(url, headers=headers, json=data, params=params)
+    response = client.models.generate_content(model="gemini-3-flash-preview", contents=prompt_text)
+    return response.txt
+
     
-    if response.status_code == 200:
+    #  response = requests.post(url, headers=headers, json=data, params=params)  
+    #if response.status_code == 200:
         # Extract response text
-        result = response.json()['candidates'][0]['content']['parts'][0]['text']
-        return result.replace('\n', ' ').strip()
-    else:
-        raise Exception(f"API Error {response.status_code}: {response.text}")
+    #  result = response.json()['candidates'][0]['content']['parts'][0]['text']
+    #     return result.replace('\n', ' ').strip()
+    #else:
+    #    raise Exception(f"API Error {response.status_code}: {response.text}")
 
 if __name__ == "__main__":
     try:
         # Example: Calling it twice for different tasks
-        stoic = call_ai_studio("provide me a quote by using an api call to endpoint https://stoic-quotes.com/api/quotes.  return just the quote..")
-        bet = call_ai_studio("find a specific example of an illogical bet that is active on a betting website such as kalshi or polymarket. choose one at random so that your reply is likely to be different from yesterday. make your response brief.")
+        stoic = call_ai_studio("provide me a quote by using an api call to endpoint https://stoic-quotes.com/api/quotes.  return just the quote as plain text.")
+        bet = call_ai_studio("find a specific example of an illogical bet that is active on a betting website such as kalshi or polymarket. choose one at random so that your reply is likely to be different from yesterday. make your response brief and return only plain text.")
     except Exception as e:
         print(f"Error: {e}")
         exit(1)
