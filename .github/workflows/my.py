@@ -41,7 +41,7 @@ if __name__ == "__main__":
     try:
         # Example: Calling it twice for different tasks
         stoic = call_ai_studio("provide me a quote by using an api call to endpoint https://stoic-quotes.com/api/quotes.  return just the quote and authors name as plain text.")
-        bet = call_ai_studio("find a specific recent example of an illogical bet that is active on a betting website such as kalshi or polymarket. find several and choose one at random so that your reply is likely to be different from yesterday. make your response brief and return only plain text.")
+        bet = call_ai_studio("find several specific examples from the year 2026 of an illogical bet that is active on a betting website such as kalshi or polymarket. choose one and return only that one example as plain text.")
     except Exception as e:
         print(f"Error: {e}")
         exit(1)
